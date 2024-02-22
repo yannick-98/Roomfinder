@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const connection = async () => {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/Roomfinder");
-    console.log("Database connected");
+    await mongoose.connect(process.env.DB_URL);
+    console.log("Database connected", process.env.DB_URL);
   } catch (error) {
     console.log(error);
     throw new Error("Error connecting to database");

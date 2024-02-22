@@ -1,12 +1,14 @@
 const { connection } = require("./database/connection");
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config({ path: "variables.env" });
 
 connection();
 console.log("project started");
 
 const app = express();
-const port = 3100;
+const port = process.env.PORT || 3000;
+const host = process.env.HOST || "0.0.0.0";
 
 app.use(cors());
 app.use(express.json());
@@ -16,10 +18,10 @@ const UserRoutes = require("./Routes/User");
 const PostRoutes = require("./Routes/Post");
 const ChatRoutes = require("./Routes/Chat");
 
-app.use("/api/user", UserRoutes);
-app.use("/api/post", PostRoutes);
-app.use("/api/chat", ChatRoutes);
+app.use("/user", UserRoutes);
+app.use("/post", PostRoutes);
+app.use("/chat", ChatRoutes);
 
-app.listen(port, () => {
+app.listen(port, host, () => {
   console.log(`Server started on port ${port}`);
 });

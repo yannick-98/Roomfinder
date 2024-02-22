@@ -266,6 +266,7 @@ const uploadAvatar = async (req, res) => {
     }
 
     return res.status(200).json({
+      status: "success",
       message: "Avatar uploaded",
       user: {
         id: user._id,
@@ -274,8 +275,7 @@ const uploadAvatar = async (req, res) => {
         email: user.email,
         avatar: user.avatar,
       },
-      file: req.file,
-      files: req.files,
+      file: image,
     });
   } catch (error) {
     console.log(error);

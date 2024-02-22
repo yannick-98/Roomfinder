@@ -254,7 +254,7 @@ const uploadAvatar = async (req, res) => {
 
     const user = await User.findOneAndUpdate(
       { _id: req.user.id },
-      { avatar: req.file.filename },
+      { avatar: image.filename },
       { new: true }
     );
 

@@ -195,7 +195,6 @@ const updateUser = async (req, res) => {
         phone: params.phone,
         email: params.email,
         password: params.password,
-        avatar: params.avatar,
       },
       { new: true }
     );
